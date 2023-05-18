@@ -31,23 +31,10 @@ convertForm.addEventListener("submit", (event) => {
 
       // Show the download and copy buttons
       downloadLink.innerHTML = `<a href="data:text/html;charset=utf-8,${encodeURIComponent(htmlData)}" download="converted_page.html">Download HTML</a>`;
-      downloadLink.style.display = "inline-block";
       copyCodeBtn.style.display = "inline-block";
     })
     .catch(error => {
       console.error(error);
       alert("There was an error fetching the web page. Please check the URL and try again.");
-    });
-});
-
-copyCodeBtn.addEventListener("click", () => {
-  const code = codeBlock.textContent;
-  navigator.clipboard.writeText(code)
-    .then(() => {
-      alert("Code copied to clipboard!");
-    })
-    .catch(error => {
-      console.error(error);
-      alert("Failed to copy code to clipboard.");
     });
 });
