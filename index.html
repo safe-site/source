@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Convert Web Page to HTML File</title>
+    <style>
+      code {
+        display: block;
+        white-space: pre-wrap;
+        margin: 1em 0;
+        padding: 1em;
+        font-size: 90%;
+        background-color: #000;
+        color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 0.5em;
+        box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
+        overflow-x: auto;
+      }
+      
+      ::-webkit-scrollbar {
+        height: 0.5em;
+      }
+      
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      }
+      
+      ::-webkit-scrollbar-thumb {
+        background-color: #cccccc;
+        outline: 1px solid slategrey;
+      }
+      
+      #copy-code-btn {
+        display: none;
+        margin-top: 10px;
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      
+      #copy-code-btn:hover {
+        background-color: #45a049;
+      }
+      
+      body {
+        text-align: center;
+      }
+      
+      h1 {
+        font-size: 2em;
+        font-weight: bold;
+        margin: 0.5em 0;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Convert Web Page to HTML File</h1>
+    <form id="convert-form">
+      <label for="url">URL:</label>
+      <input type="text" id="url" name="url" required>
+      <button type="submit">Convert to HTML</button>
+    </form>
+    <div id="preview"></div>
+    <div id="download"></div>
+    <code id="code"></code>
+    <button id="copy-code-btn" style="display: none;">Copy Code</button>
+    <script>
+      const convertForm = document.querySelector("#convert-form");
+      const urlInput = document.querySelector("#url");
+      const downloadLink = document.querySelector("#download");
+      const codeBlock = document.querySelector("#code");
+      const copyCodeBtn = document.querySelector("#copy-code-btn");
+      
+      convertForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const url = urlInput.value;
+        
+        fetch(url)
+          .then(response => response.text())
+          .then(data => {
+            // Set the textContent of the code block to the HTML source code
+            codeBlock.textContent = data;
+            
+            // Show the download and copy buttons
+            downloadLink.innerHTML = `<a href="data:text/plain;charset=utf-8,${encodeURIComponent(data)}" download="converted.html">Download HTML</a>`;
+            copyCodeBtn.style.display = "inline-block";
+          })
+          .catch(error => {
+            console.error(error);
+            alert("There was an error fetching the web page. Please check the URL and try again.");
+          });
+      });
+    </script>
+  </body>
+</html>
+
