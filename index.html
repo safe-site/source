@@ -2,66 +2,8 @@
 <html>
   <head>
     <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convert Web Page to HTML File</title>
-    <link rel="stylesheet" href="styles.css">
-    <style type="text/css">
-    body {
-    text-align: center;
-    margin-top: 50px;
-    }
-    
-    h1 {
-    font-size: 2em;
-    font-weight: bold;
-    margin: 0.5em 0;
-    }
-    
-    form {
-    margin-bottom: 20px;
-    }
-    
-    label {
-    margin-right: 5px;
-    }
-    
-    input {
-    padding: 5px;
-    }
-    
-    button {
-    padding: 5px 10px;
-    cursor: pointer;
-    }
-    
-    #preview {
-    margin-bottom: 20px;
-    }
-    
-    #download {
-    margin-bottom: 10px;
-    }
-    
-    #code {
-    white-space: pre-wrap;
-    margin: 0 auto;
-    max-width: 800px;
-    background-color: #111;
-    color: lightgreen;
-    padding: 10px;
-    border: 1px solid #ccc;
-    overflow-x: auto;
-    }
-    
-    #copy-code-btn {
-    margin-top: 10px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    }
-    
-    </style>
+    <link rel="stylesheet" href="source.css">
     <style id="custom-css"></style>
   </head>
   <body>
@@ -75,63 +17,7 @@
     <div id="download"></div>
     <pre id="code"></pre>
     <button id="copy-code-btn" style="display: none;">Copy Code</button>
-    <script src="script.js"></script>
+    <script src="source.js"></script>
     <script id="custom-js"></script>
-    <script type="text/javascript">
-    const convertForm = document.querySelector("#convert-form");
-    const urlInput = document.querySelector("#url");
-    const downloadLink = document.querySelector("#download");
-    const codeBlock = document.querySelector("#code");
-    const copyCodeBtn = document.querySelector("#copy-code-btn");
-    const customCss = document.querySelector("#custom-css");
-    const customJs = document.querySelector("#custom-js");
-    
-    convertForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const url = urlInput.value;
-    
-    Promise.all([
-    fetch(url).then(response => response.text()), // Fetch HTML content
-    fetch(url).then(response => response.text()), // Fetch CSS content
-    fetch(url).then(response => response.text())  // Fetch JavaScript content
-    ])
-    .then(data => {
-    const htmlData = data[0];
-    const cssData = data[1];
-    const jsData = data[2];
-    
-    // Set the textContent of the code block to the HTML source code
-    codeBlock.textContent = htmlData;
-    
-    // Inject custom CSS and JS into the preview
-    const preview = document.querySelector("#preview");
-    preview.innerHTML = htmlData;
-    customCss.textContent = cssData;
-    customJs.textContent = jsData;
-    
-    // Show the download and copy buttons
-    downloadLink.innerHTML = `<a href="data:text/html;charset=utf-8,${encodeURIComponent(htmlData)}" download="converted_page.html">Download HTML</a>`;
-    downloadLink.style.display = "inline-block";
-    copyCodeBtn.style.display = "inline-block";
-    })
-    .catch(error => {
-    console.error(error);
-    alert("There was an error fetching the web page. Please check the URL and try again.");
-    });
-    });
-    
-    copyCodeBtn.addEventListener("click", () => {
-    const code = codeBlock.textContent;
-    navigator.clipboard.writeText(code)
-    .then(() => {
-    alert("Code copied to clipboard!");
-    })
-    .catch(error => {
-    console.error(error);
-    alert("Failed to copy code to clipboard.");
-    });
-    });
-    
-    </script>
   </body>
 </html>
