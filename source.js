@@ -11,7 +11,7 @@
     event.preventDefault();
     const password = passwordInput.value;
   
-    // Replace 'your-password' with your desired password
+    // Replace '@843321' with your desired password
     if (password === "your-password") {
       passwordForm.style.display = "none";
       convertForm.style.display = "block";
