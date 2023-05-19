@@ -1,54 +1,79 @@
-    body {
-    text-align: center;
-    margin-top: 50px;
-    }
-    
-    h1 {
-    font-size: 2em;
-    font-weight: bold;
-    margin: 0.5em 0;
-    }
-    
-    form {
-    margin-bottom: 20px;
-    }
-    
-    label {
-    margin-right: 5px;
-    }
-    
-    input {
-    padding: 5px;
-    }
-    
-    button {
-    padding: 5px 10px;
-    cursor: pointer;
-    }
-    
-    #preview {
-    margin-bottom: 20px;
-    }
-    
-    #download {
-    margin-bottom: 10px;
-    }
-    
-    #code {
-    white-space: pre-wrap;
-    margin: 0 auto;
-    max-width: 800px;
-    background-color: #111;
-    color: lightgreen;
-    padding: 10px;
-    border: 1px solid #ccc;
-    overflow-x: auto;
-    }
-    
-    #copy-code-btn {
-    margin-top: 10px;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    }
+code {
+     display: block;
+     white-space: pre-wrap;
+     margin: 1em 0;
+     padding: 1em;
+     font-size: 90%;
+     background-color: #000;
+     color: green;
+     border: 1px solid #ccc;
+     border-radius: 0.5em;
+     box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
+     overflow-x: auto;
+     text-align: left;
+   }
+   
+   
+   
+   ::-webkit-scrollbar {
+     height: 0.5em;
+   }
+   
+   ::-webkit-scrollbar-track {
+     box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+   }
+   
+   ::-webkit-scrollbar-thumb {
+     background-color: #cccccc;
+     outline: 1px solid slategrey;
+   }
+   
+   #copy-code-btn {
+     display: none;
+     margin-top: 10px;
+     background-color: #4CAF50;
+     color: white;
+     padding: 12px 20px;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+   }
+   
+   #copy-code-btn:hover {
+     background-color: #45a049;
+   }
+   
+   body {
+     text-align: center;
+   }
+   
+  h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0.5em 0;
+  background: linear-gradient(45deg, #ff00cc, #3333ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animateH1 3s infinite;
+  font-family: "Arial", sans-serif;
+  }
+  
+  @keyframes animateH1 {
+  0% {
+  filter: hue-rotate(0deg);
+  }
+  100% {
+  filter: hue-rotate(360deg);
+  }
+  }
+  
+  
+  
+   #download {
+   background-color: #111;
+   }
+   
+   #download:hover {
+   background-color: red;
+   }
+   
