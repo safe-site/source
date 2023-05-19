@@ -1,4 +1,4 @@
-<script>
+
   const passwordForm = document.querySelector("#password-form");
   const passwordInput = document.querySelector("#password-input");
   const convertForm = document.querySelector("#convert-form");
@@ -102,4 +102,4 @@
     window.getSelection().removeAllRanges();
     alert('Code copied to clipboard!');
   });
-</script>
+
