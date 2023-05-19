@@ -16,7 +16,7 @@
       passwordForm.style.display = "none";
       convertForm.style.display = "block";
     } else {
-      alert("Incorrect password. Please try again.");
+      alert("Apologies, the password you entered is incorrect. This website is password protected and can only be accessed by Shashi. If you wish to use this tool, please reach out to Shashi by visiting bit.ly/843-321 and obtaining the password. Thank you for your understanding.");
     }
   });
   
