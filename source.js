@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Convert Web Page to <a href="https://9508914855.github.io/link-tree/" target="_blank" class="my-link">HTML file</a></title>
-  <style>
-    /* Your CSS styles here */
 
-    #code-pad {
-      display: none;
-    }
-
-    /* Rest of your CSS styles */
-  </style>
-</head>
 
   const passwordForm = document.querySelector("#password-form");
   const passwordInput = document.querySelector("#password-input");
@@ -28,7 +13,7 @@
     const password = passwordInput.value;
 
     // Replace 'your-password' with your desired password
-    if (password === "your-password") {
+    if (password === "000") {
       passwordForm.style.display = "none";
       convertForm.style.display = "block";
     } else {
