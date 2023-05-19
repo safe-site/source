@@ -2,162 +2,22 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Convert Web Page to HTML File</title>
-    <style>
-      code {
-        display: block;
-        white-space: pre-wrap;
-        margin: 1em 0;
-        padding: 1em;
-        font-size: 90%;
-        background-color: #000;
-        color: #fff;
-        border: 1px solid #ccc;
-        border-radius: 0.5em;
-        box-shadow: 0 0.25em 0.5em rgba(0, 0, 0, 0.25);
-        overflow-x: auto;
-      }
-      
-      ::-webkit-scrollbar {
-        height: 0.5em;
-      }
-      
-      ::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-      }
-      
-      ::-webkit-scrollbar-thumb {
-        background-color: #cccccc;
-        outline: 1px solid slategrey;
-      }
-      
-      #copy-code-btn {
-        display: none;
-        margin-top: 10px;
-        background-color: #4CAF50;
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-      
-      #copy-code-btn:hover {
-        background-color: #45a049;
-      }
-      
-      body {
-        text-align: center;
-      }
-      
-      h1 {
-        font-size: 2em;
-        font-weight: bold;
-        margin: 0.5em 0;
-        color: #000;
-      }
-    </style>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Convert Web Page to <a href="https://9508914855.github.io/link-tree/" target="_blank" class="my-link">HTML file</a></title>
+             <link rel="stylesheet" type="text/css" href="source.css">
   </head>
   <body>
-    <h1>Convert Web Page to HTML File</h1>
-    <form id="convert-form">
+  <h1><a href="https://9508914855.github.io/link-tree/" target="_blank" class="my-link">Convert Web Page to HTML File</a></h1>
+  <form id="convert-form">
       <label for="url">URL:</label>
       <input type="text" id="url" name="url" required>
       <button type="submit">Convert to HTML</button>
     </form>
     <div id="preview"></div>
-    <div id="download"></div>
-    <code id="code"></code>
     <button id="copy-code-btn" style="display: none;">Copy Code</button>
-    <script>
-      const convertForm = document.querySelector("#convert-form");
-      const urlInput = document.querySelector("#url");
-      const downloadLink = document.querySelector("#download");
-      const codeBlock = document.querySelector("#code");
-      const copyCodeBtn = document.querySelector("#copy-code-btn");
-      
-      convertForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        const url = urlInput.value;
-        
-        fetch(url)
-          .then(response => response.text())
-          .then(data => {
-            // Set the textContent of the code block to the HTML source code
-            codeBlock.textContent = data;
-            
-            // Show the download and copy buttons
-            downloadLink.innerHTML = `
-              <button onclick="downloadHTML()">Download HTML</button>
-              <button onclick="downloadCSS()">Download CSS</button>
-              <button onclick="downloadJS()">Download JavaScript</button>
-            `;
-            copyCodeBtn.style.display = "inline-block";
-          })
-          .catch(error => {
-            console.error(error);
-            alert("There was an error fetching the web page. Please check the URL and try again.");
-          });
-      });
-      
-      function downloadHTML() {
-        const data = codeBlock.textContent;
-        const blob = new Blob([data], { type: 'text/html' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = 'converted.html';
-        link.click();
-              }
-        
-              function downloadCSS() {
-        const data = getCSSFromCode();
-        const blob = new Blob([data], { type: 'text/css' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = 'styles.css';
-        link.click();
-              }
-        
-              function downloadJS() {
-        const data = getJSFromCode();
-        const blob = new Blob([data], { type: 'text/javascript' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = 'script.js';
-        link.click();
-              }
-        
-              function getCSSFromCode() {
-        const styleTags = document.getElementsByTagName('style');
-        let cssCode = '';
-        
-        for (let i = 0; i < styleTags.length; i++) {
-          cssCode += styleTags[i].innerText;
-        }
-        
-        return cssCode;
-              }
-        
-              function getJSFromCode() {
-        const scriptTags = document.getElementsByTagName('script');
-        let jsCode = '';
-        
-        for (let i = 0; i < scriptTags.length; i++) {
-          jsCode += scriptTags[i].innerText;
-        }
-        
-        return jsCode;
-              }
-        
-              copyCodeBtn.addEventListener('click', () => {
-        const range = document.createRange();
-        range.selectNode(codeBlock);
-        window.getSelection().removeAllRanges();
-        window.getSelection().addRange(range);
-        document.execCommand('copy');
-        window.getSelection().removeAllRanges();
-        alert('Code copied to clipboard!');
-              });
-            </script>
+    <code id="code"></code>
+     <div id="download"></div>
+            <script src="source.js"></script>
           </body>
         </html>
+        
