@@ -12,7 +12,7 @@
     const password = passwordInput.value;
   
     // Replace '@843321' with your desired password
-    if (password === "@843321") {
+    if (password === "#843321") {
       passwordForm.style.display = "none";
       convertForm.style.display = "block";
     } else {
