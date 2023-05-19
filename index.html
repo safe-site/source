@@ -87,7 +87,11 @@
             codeBlock.textContent = data;
             
             // Show the download and copy buttons
-            downloadLink.innerHTML = `<a href="data:text/plain;charset=utf-8,${encodeURIComponent(data)}" download="converted.html">Download HTML</a>`;
+            downloadLink.innerHTML = `
+              <button onclick="downloadHTML()">Download HTML</button>
+              <button onclick="downloadCSS()">Download CSS</button>
+              <button onclick="downloadJS()">Download JavaScript</button>
+            `;
             copyCodeBtn.style.display = "inline-block";
           })
           .catch(error => {
@@ -95,6 +99,65 @@
             alert("There was an error fetching the web page. Please check the URL and try again.");
           });
       });
-    </script>
-  </body>
-</html>
+      
+      function downloadHTML() {
+        const data = codeBlock.textContent;
+        const blob = new Blob([data], { type: 'text/html' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'converted.html';
+        link.click();
+              }
+        
+              function downloadCSS() {
+        const data = getCSSFromCode();
+        const blob = new Blob([data], { type: 'text/css' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'styles.css';
+        link.click();
+              }
+        
+              function downloadJS() {
+        const data = getJSFromCode();
+        const blob = new Blob([data], { type: 'text/javascript' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'script.js';
+        link.click();
+              }
+        
+              function getCSSFromCode() {
+        const styleTags = document.getElementsByTagName('style');
+        let cssCode = '';
+        
+        for (let i = 0; i < styleTags.length; i++) {
+          cssCode += styleTags[i].innerText;
+        }
+        
+        return cssCode;
+              }
+        
+              function getJSFromCode() {
+        const scriptTags = document.getElementsByTagName('script');
+        let jsCode = '';
+        
+        for (let i = 0; i < scriptTags.length; i++) {
+          jsCode += scriptTags[i].innerText;
+        }
+        
+        return jsCode;
+              }
+        
+              copyCodeBtn.addEventListener('click', () => {
+        const range = document.createRange();
+        range.selectNode(codeBlock);
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand('copy');
+        window.getSelection().removeAllRanges();
+        alert('Code copied to clipboard!');
+              });
+            </script>
+          </body>
+        </html>
